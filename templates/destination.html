@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Destination Info</title>
+</head>
+<style>
+        * {
+        margin: 0px auto;
+    }
+    
+        h4 {
+            margin: 10px;
+            margin-right: 600px;
+            color: white;
+        }
+    
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h5 {
+            text-align: center;
+        }
+    
+        .add-trip {
+            height: 50px;
+            width: 100px;
+            background-color: blue;
+            color: white;
+            border-radius: 15px;
+            padding: 15px;
+            margin-left: 10px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    
+        a:hover {
+            color: red;
+            text-decoration: none;
+        }
+    
+    </style>
+<body>
+    <nav class="navbar navbar-light bg-dark">
+        <h4>Welcome, {{session['greeting']}}!</h4>
+        <a href="/trips">Home</a>
+        <a href="/logout">Logout</a>
+    </nav>
+    {% for i in trip_info %}
+    <h1>{{i['destination']}}</h1>
+    <p>Planned By: {{i['username']}}</p>
+    <p>Description: {{i['description']}}</p>
+    <p>Travel Date From: {{i['start']}}</p>
+    <p>Travel Date To: {{i['end']}}</p>
+    {% endfor %}
+
+    <h2>Other Users joining this trip:</h2>
+    {% for i in users_going %}
+    <h5>{{i['username']}}</h5>
+    {% endfor %}
+</body>
+</html>

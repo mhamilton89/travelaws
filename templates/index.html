@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login/Register</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="wrapper container">
+        <h1>Travel Buddy!</h1>
+        <div class="row">
+            <div class="col p-4 m-1 bg-default">
+                <h1>Register</h1>
+                {% with messages = get_flashed_messages() %}    
+                    {% if messages %}                            
+                        {% for message in messages %}            
+                            <p class="text-danger">{{message}}</p>                   
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <form action="/process" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter first name..." name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="Username">Username:</label>
+                        <input type="text" class="form-control" id="uname" placeholder="Enter username" name="userName">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Password:</label>
+                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd2">Re-Enter Password:</label>
+                        <input type="password" class="form-control" id="pwd2" placeholder="Re-Enter password" name="pwd2">
+                    </div>
+                <button type="submit" class="btn btn-secondary">Register</button>
+                </form>
+            </div>
+            <div class="col p-4 m-1 bg-info">
+                <h1>Login</h1>
+                <form action="/login" method="POST">
+                    <div class="form-group">
+                        <label for="uname">Username:</label>
+                        <input type="text" class="form-control" id="uname" placeholder="Enter Username" name="logUserName">
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPwd">Password:</label>
+                        <input type="password" class="form-control" id="loginPwd" placeholder="Enter password" name="logPwd">
+                    </div>
+                    <button type="submit" class="btn btn-warning">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
